@@ -4,8 +4,8 @@
 #include <string>
 #include <memory>
 
+
 // typedef std::uint_least8_t Coord;
-typedef std::shared_ptr<Piece> the_piece;
 
 struct Coord {
     std::uint_least8_t x;
@@ -59,7 +59,7 @@ inline Coord coord(std::string raw_coord) {
     std::uint_least8_t a = (std::stoi(XY(raw_coord)));
     Coord xy;
     xy.x = a / 10;
-    xy.y = a % 10;
+    xy.y = a % 10 - 1;
 
     return xy;
 }

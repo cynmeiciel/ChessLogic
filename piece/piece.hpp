@@ -2,6 +2,8 @@
 #include <iostream>
 #include "../constconfig.hpp"
 
+#define newPiece std::make_shared<Piece>
+
 class Piece {
 private:
     bool m_white;
@@ -22,3 +24,5 @@ public:
 
     virtual void move();
 };
+
+typedef std::shared_ptr<Piece> the_piece;

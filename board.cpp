@@ -14,7 +14,6 @@ Board::~Board() {
 }
 
 
-std::ostream& operator<<(std::ostream &os, const Board &obj) {
-    os << (std::string)"lolol";
-    return os;
+void Board::view() {
+    
 }

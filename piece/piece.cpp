@@ -13,5 +13,5 @@ void Piece::beCaptured() {
 }
 
 std::string Piece::getName() {
-    return this->name;
+    return "loz";
 }

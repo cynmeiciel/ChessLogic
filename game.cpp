@@ -1,17 +1,13 @@
 #include "game.hpp"
 
-void Game::init_var() {
-    this->board = new Board();
-    mess("Game initialized!");
-}
-
-void Game::init_game() {
-    mess("Game initialized!");
-}
-
 Game::Game() {
-    this->init_var();
-    this->init_game();
+    this->isRunning = true;
+    this->board = new Board();
+    this->currentState = TurnState::WhiteTurn;
+    this->successfully = false;
+
+    mess("Game initialized!");
+    std::cout << "\n";
 }
 
 Game::~Game() {
@@ -20,6 +16,7 @@ Game::~Game() {
 
 void Game::viewBoard() {
     mess("View board: ");
+    this->board->view();
 }
 
 void Game::viewHelp() {

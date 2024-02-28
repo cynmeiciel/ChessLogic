@@ -7,10 +7,10 @@ class Game {
 private:
 
     bool isRunning;
+    bool successfully;
     Board* board;
+    TurnState currentState;
 
-    void init_var();
-    void init_game();
 
     void quitGame();
 
@@ -22,6 +22,7 @@ private:
     void mainloop();
 
     void spotSelected(Coord xy);
+    void foundNoPiece();
 
 public:
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "piece/piece.hpp"
 #include "constconfig.hpp"
 #include <vector>
@@ -16,6 +18,6 @@ public:
 
     the_piece findPiecebyCoor(Coord xy);
 
-    friend std::ostream& operator << (std::ostream& os, const Board& obj);
+    void view();
 };
 
