@@ -1,0 +1,3 @@
+**Just a fun project to train my OOP skills**
+
+Preparing for Miankil...
