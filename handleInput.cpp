@@ -54,9 +54,9 @@ void Game::handleInput() {
 
     Coord xy;
     try {
-        if (input.length() == 2 && input[1] >= 1 && input[1] <= 8) {
+        xy = coord(input);
+        if (input.length() == 2 && xy.y >= 1 && xy.y <= 8) {
             // Successfully typed
-            xy = coord(input);
             spotSelected(xy);
 
         } else {
