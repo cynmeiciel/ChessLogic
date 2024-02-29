@@ -3,12 +3,12 @@
 #include "piece.hpp"
 
 
-class Pawn : public Piece {
+class Rook : public Piece {
 private:
     bool initialState;
 
 public:
-    Pawn(bool isWhite);
+    Rook(bool isWhite);
 
     bool move() override;
 };

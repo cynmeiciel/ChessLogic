@@ -10,6 +10,7 @@ protected:
     std::string name;
 
     Coord xy;
+
 public:
 
     bool isWhite();
@@ -19,7 +20,7 @@ public:
 
     std::string getName();
 
-    virtual void move() = 0;
+    virtual bool move() = 0;
 };
 
 typedef std::shared_ptr<Piece> the_piece;

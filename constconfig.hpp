@@ -10,10 +10,13 @@
 struct Coord {
     std::uint_least8_t x;
     std::uint_least8_t y;
+
+    Coord(std::uint_least8_t a, std::uint_least8_t b) : x(a), y(b) {}
+    Coord() {};
 };
 
 inline void mess(std::string mez) {
-    std::cout << mez << std::endl;
+    std::cout << mez << "\n" << std::endl;
 }
 
 inline std::string XY(std::string raw_coord) {

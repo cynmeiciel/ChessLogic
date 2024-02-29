@@ -1,9 +1,11 @@
 #include "pawn.hpp"
 
-Pawn::Pawn() {
-    this->name = "Pawn";
+Pawn::Pawn(bool isWhite) {
+    this->m_white = isWhite;
+    this->name = (isWhite)? "White Pawn" : "Black Pawn";
+    this->initialState = true;
 }
 
-void Pawn::move() {
+bool Pawn::move() {
     mess("loz");
 }

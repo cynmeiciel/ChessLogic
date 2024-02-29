@@ -31,7 +31,7 @@ void Game::start() {
 
 void Game::quitGame() {
     this->isRunning = false;
-    std::cout << "Game quited!" << std::endl;
+    mess("Quited!");
 }
 
 
