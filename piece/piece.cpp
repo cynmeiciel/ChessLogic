@@ -1,6 +1,7 @@
 #include "piece.hpp"
 
-bool Piece::isWhite() {
+bool Piece::isWhite()
+{
     return this->m_white;
 }
 
@@ -13,5 +14,5 @@ void Piece::beCaptured() {
 }
 
 std::string Piece::getName() {
-    return "loz";
+    return this->name;
 }

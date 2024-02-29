@@ -67,7 +67,3 @@ inline Coord coord(std::string raw_coord) {
 enum class TurnState {
     WhiteTurn, WhiteSelected, BlackTurn, BlackSelected
 };
-
-enum class GameState {
-    Active, WhiteWin, BlackWin, Stalemate
-};

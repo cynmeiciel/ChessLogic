@@ -12,7 +12,7 @@ void Game::spotSelected(Coord xy) {
         this->foundNoPiece();
     else {
         mess("Piece founded:");
-        // mess(piece->getName());
+        mess(piece->getName());
 
         this->successfully = true;
     }
@@ -55,7 +55,7 @@ void Game::handleInput() {
     Coord xy;
     try {
         xy = coord(input);
-        if (input.length() == 2 && xy.y >= 1 && xy.y <= 8) {
+        if (input.length() == 2 && xy.y >= 0 && xy.y <= 7) {
             // Successfully typed
             spotSelected(xy);
 

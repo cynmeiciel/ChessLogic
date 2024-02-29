@@ -26,10 +26,11 @@
 *.a
 *.lib
 
-# VS Code config
-.vscode/
-
 # Executables
 *.exe
 *.out
 *.app
+
+# VS Code config and some of the others
+.vscode/
+.sh

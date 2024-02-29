@@ -1,19 +1,16 @@
+#pragma once
+
 #include <string>
 #include <iostream>
 #include "../constconfig.hpp"
 
-#define newPiece std::make_shared<Piece>
-
 class Piece {
-private:
+protected:
     bool m_white;
     std::string name;
 
     Coord xy;
-
 public:
-    Piece();
-    virtual ~Piece();
 
     bool isWhite();
     bool setWhite_Black(bool iswhite);
@@ -22,7 +19,7 @@ public:
 
     std::string getName();
 
-    virtual void move();
+    virtual void move() = 0;
 };
 
 typedef std::shared_ptr<Piece> the_piece;

@@ -26,7 +26,7 @@ private:
 
 public:
 
-    Game ();
+    Game();
     virtual ~Game();
 
     void start();
