@@ -1,32 +1,67 @@
 #include "game.hpp"
-#include "board.hpp"
 
-the_piece Board::findPiecebyCoor(Coord xy) {
-    return this->pieceAlive[xy.x][xy.y];
-}
-
-void Game::spotSelected(Coord xy) {
+void Game::handlePick(bool whiteTurn, Coord xy) {
     the_piece piece = this->board->findPiecebyCoor(xy);
 
     if (piece == nullptr)
         this->foundNoPiece();
-    else {
-        mess("Piece founded:");
-        mess(piece->getName());
-
+    else if (piece->isWhite() == whiteTurn) { // Check if having picked the right side
+        this->selectedPiece = xy;
         this->successfully = true;
+    } else {
+        this->pickWrongSide();
+    }
+}
+
+void Game::handleMove(bool whiteTurn, Coord xy) {
+    the_piece destination = this->board->findPiecebyCoor(xy);
+    if (destination != nullptr)
+        if (destination->isWhite() == whiteTurn) {
+            this->captureAlly();
+            this->back();
+            return;
+        }
+    this->board->movePiece(this->selectedPiece, xy);
+    this->successfully = true;
+}
+
+// Handle when input is valid
+void Game::spotSelected(Coord xy) {
+    switch (this->currentState)
+    {
+    case TurnState::WhiteTurn:
+        this->handlePick(true, xy);
+        break;
+    case TurnState::WhiteSelected:
+        this->handleMove(true, xy);
+        break;
+    case TurnState::BlackTurn:
+        this->handlePick(false, xy);
+        break;
+    case TurnState::BlackSelected:
+        this->handleMove(false, xy);
+        break;
     }
 }
 
 void Game::foundNoPiece() {
     mess("No piece was found!");
-    mess("Please select again!");
+    mess("Please select again! You can type \"view\" to view the current board.");
+}
+
+void Game::pickWrongSide() {
+    mess("This is not your piece!");
+    mess("Please select again! You can type \"view\" to view the current board.");
+}
+
+void Game::captureAlly() {
+    mess("You cannot capture your own piece!");
+    mess("Please select again! You can type \"view\" to view the current board.");
 }
 
 void Game::handleInput() {
     std::string input;
     std::cin >> input;
-    mess(input);
 
     if (input == "quit") {
         this->quitGame();
@@ -40,18 +75,16 @@ void Game::handleInput() {
     } else if (input == "reset") {
         this->start();
         return;
+    } else if (input == "back") {
+        this->back();
+        return;
     }
 
-    // switch (turnState)
-    // {
-    // case TurnState::WhiteTurn:
-        
-    //     break;
-    
-    // default:
-    //     break;
-    // }
+    this->checkInput(input);
+    // continue to handle?
+}
 
+void Game::checkInput(std::string input) {
     Coord xy;
     try {
         xy = coord(input);
@@ -66,5 +99,4 @@ void Game::handleInput() {
         mess("Invalid input!");
         return;
     }
-    // continue to handle
 }

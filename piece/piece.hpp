@@ -25,4 +25,5 @@ public:
     virtual bool move() = 0;
 };
 
+/// @brief A pointer representing a location on the board
 typedef std::shared_ptr<Piece> the_piece;

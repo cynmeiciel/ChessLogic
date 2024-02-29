@@ -24,8 +24,6 @@ inline std::string XY(std::string raw_coord) {
 
     std::string coordi;
 
-    std::cout << raw_coord[0] << std::endl;
-
     switch ((raw_coord[0]))
     {
     case 'a':
