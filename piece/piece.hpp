@@ -8,6 +8,7 @@ class Piece {
 protected:
     bool m_white;
     std::string name;
+    std::string abbrv;
 
     Coord xy;
 
@@ -19,6 +20,7 @@ public:
     void beCaptured();
 
     std::string getName();
+    std::string getAbbrv();
 
     virtual bool move() = 0;
 };

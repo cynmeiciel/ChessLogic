@@ -81,7 +81,15 @@ void Board::pieceCaptured(Coord xy, bool en_passant) {
 
 
 void Board::view() {
-    
+    std::cout.setf(std::ios::left | std::ios::fixed);
+    for (int_least8_t row = 7; row >= 0; row--) {
+        mess("");
+        for (int_least8_t col = 0; col < 8; col++) {
+            bool empty = (this->pieceAlive[col][row] == nullptr);
+            std::string mez = (empty)? "[]" : this->pieceAlive[col][row]->getAbbrv();
+            std::cout << std::setw(5) << mez;
+        }
+    }
 }
 
 void Board::movePiece(Coord start, Coord destination, bool en_passant) {

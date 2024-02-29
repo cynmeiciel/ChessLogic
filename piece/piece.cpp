@@ -16,3 +16,7 @@ void Piece::beCaptured() {
 std::string Piece::getName() {
     return this->name;
 }
+
+std::string Piece::getAbbrv() {
+    return this->abbrv;
+}
