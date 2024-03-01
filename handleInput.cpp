@@ -78,7 +78,7 @@ void Game::handleInput() {
         this->back();
         return;
     }
-
+    
     this->checkInput(input);
     // continue to handle?
 }

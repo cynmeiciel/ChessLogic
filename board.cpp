@@ -62,9 +62,6 @@ Board::~Board() {
     mess("Board cleaned!");
 }
 
-/// @brief Find the piece with the coordinates provided
-/// @param xy : the 'polished' coord
-/// @return The pointer of the piece
 the_piece Board::findPiecebyCoor(Coord xy) {
     the_piece piece = this->pieceAlive[xy.x][xy.y];
     return piece;
@@ -91,10 +88,6 @@ void Board::pieceCaptured(Coord xy, bool en_passant)
         this->pieceDead.push_back(captured);
 }
 
-/// @brief Move the piece to the destination
-/// @param start the 'polished' coord
-/// @param destination the 'polished' coord
-/// @param en_passant if en-passant
 void Board::movePiece(Coord start, Coord destination, bool en_passant) {
     if (this->pieceAlive[destination.x][destination.y] != nullptr 
         || en_passant) // Sometimes en-passant might occur

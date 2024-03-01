@@ -6,8 +6,7 @@
 #include <memory>
 
 
-// typedef std::uint_least8_t Coord;
-
+/// @brief A struct representing a coordinate on the board.
 struct Coord {
     std::uint_least8_t x;
     std::uint_least8_t y;
@@ -16,10 +15,25 @@ struct Coord {
     Coord() {};
 };
 
+/**
+ * @brief Prints a message to the console.
+ *
+ * This function prints the specified message to the console, followed by a newline.
+ *
+ * @param mez The message to print.
+ */
 inline void mess(std::string mez) {
     std::cout << mez << "\n" << std::endl;
 }
 
+/**
+ * @brief Converts a chess coordinate to an array index.
+ *
+ * This function converts a chess coordinate to an array index.
+ *
+ * @param raw_coord The raw chess coordinate to convert.
+ * @return The array index corresponding to the chess coordinate.
+ */
 inline std::string XY(std::string raw_coord) {
 
     std::string coordi;
@@ -57,6 +71,14 @@ inline std::string XY(std::string raw_coord) {
     return coordi.append(1, raw_coord[1]);
 }
 
+/**
+ * @brief Converts a raw chess coordinate to a Coord struct.
+ *
+ * This function converts a raw chess coordinate to a Coord struct.
+ *
+ * @param raw_coord The raw chess coordinate to convert.
+ * @return The Coord struct corresponding to the chess coordinate.
+ */
 inline Coord coord(std::string raw_coord) {
     std::uint_least8_t a = (std::stoi(XY(raw_coord)));
     Coord xy;
@@ -66,6 +88,7 @@ inline Coord coord(std::string raw_coord) {
     return xy;
 }
 
+/// @brief An enum representing the current turn state of the game.
 enum class TurnState {
     WhiteTurn, WhiteSelected, BlackTurn, BlackSelected
 };
