@@ -81,6 +81,8 @@ void Board::pieceCaptured(Coord xy, bool en_passant)
         case TurnState::BlackSelected:
             xy.y += 1;
             break;
+        default:
+            break;
         }
         captured = this->findPiecebyCoor(xy);
         this->pieceAlive[xy.x][xy.y] = nullptr;

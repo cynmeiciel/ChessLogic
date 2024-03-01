@@ -74,13 +74,6 @@ private:
     void handleInput();
 
     /**
-     * @brief Checks if the input is a valid chess coordinate.
-     *
-     * @param input The user input to be checked.
-     */
-    void checkInput(std::string input);
-
-    /**
      * @brief Handles the case when the user picks a wrong side.
      */
     void pickWrongSide();
@@ -89,22 +82,6 @@ private:
      * @brief Handles the case when the user tries to capture their own piece.
      */
     void captureAlly();
-
-    /**
-     * @brief Handles the case when the user picks a chess piece.
-     *
-     * @param whiteTurn True if it is currently white's turn, False if it is black's turn.
-     * @param xy The coordinates of the selected piece.
-     */
-    void handlePick(bool whiteTurn, Coord xy);
-
-    /**
-     * @brief Handles the case when the user moves a chess piece.
-     *
-     * @param whiteTurn True if it is currently white's turn, False if it is black's turn.
-     * @param xy The coordinates of the selected piece.
-     */
-    void handleMove(bool whiteTurn, Coord xy);
 
     /**
      * @brief Undoes the last move and goes back to the previous state.

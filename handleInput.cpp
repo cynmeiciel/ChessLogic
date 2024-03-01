@@ -87,7 +87,7 @@ void Game::checkInput(std::string input) {
     Coord xy;
     try {
         xy = coord(input);
-        if (input.length() == 2 && xy.y >= 0 && xy.y <= 7) {
+        if (input.length() == 2 && xy.y <= 7) {
             // Successfully typed
             spotSelected(xy);
 
