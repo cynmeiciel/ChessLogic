@@ -1,6 +1,7 @@
 #include "board.hpp"
 
 Board::Board() {
+    // BOARD OF PIECES
     const int initial[8][8] = {
     //    a   b   c   d   e   f   g   h
         { 6,  5,  4,  3,  2,  4,  5,  6},//1
@@ -91,9 +92,9 @@ void Board::pieceCaptured(Coord xy, bool en_passant)
 }
 
 /// @brief Move the piece to the destination
-/// @param start : the 'polished' coord
-/// @param destination : the 'polished' coord
-/// @param en_passant : if en-passant
+/// @param start the 'polished' coord
+/// @param destination the 'polished' coord
+/// @param en_passant if en-passant
 void Board::movePiece(Coord start, Coord destination, bool en_passant) {
     if (this->pieceAlive[destination.x][destination.y] != nullptr 
         || en_passant) // Sometimes en-passant might occur

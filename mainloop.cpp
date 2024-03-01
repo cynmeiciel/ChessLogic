@@ -29,6 +29,8 @@ void Game::mainloop() {
                 mess("Select your piece!");
                 break;
             }
+        } else {
+            this->back();
         }
     }
 

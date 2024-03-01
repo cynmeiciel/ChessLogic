@@ -18,7 +18,6 @@ void Game::handleMove(bool whiteTurn, Coord xy) {
     if (destination != nullptr)
         if (destination->isWhite() == whiteTurn) {
             this->captureAlly();
-            this->back();
             return;
         }
     this->board->movePiece(this->selectedPiece, xy);
