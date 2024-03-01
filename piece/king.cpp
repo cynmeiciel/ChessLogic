@@ -7,6 +7,5 @@ King::King(bool isWhite){
     this->initialState = true;
 }
 
-bool King::move()
-{
+bool King::canMove() {
 }

@@ -9,5 +9,5 @@ private:
 public:
     Bishop(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };

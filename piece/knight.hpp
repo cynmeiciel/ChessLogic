@@ -9,5 +9,5 @@ private:
 public:
     Knight(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };

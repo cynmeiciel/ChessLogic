@@ -2,7 +2,6 @@
 
 #include "piece.hpp"
 
-
 class Rook : public Piece {
 private:
     bool initialState;
@@ -10,5 +9,5 @@ private:
 public:
     Rook(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };

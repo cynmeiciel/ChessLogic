@@ -92,7 +92,7 @@ void Game::checkInput(std::string input) {
             spotSelected(xy);
 
         } else {
-            throw std::invalid_argument("Invalid input");
+            throw std::invalid_argument("Invalid input!");
         }
     } catch (const std::invalid_argument& e) {
         mess("Invalid input!");

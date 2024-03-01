@@ -10,5 +10,5 @@ private:
 public:
     Pawn(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };

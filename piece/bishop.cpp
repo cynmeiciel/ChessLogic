@@ -6,6 +6,6 @@ Bishop::Bishop(bool isWhite) {
     this->abbrv = (isWhite)? "wB" : "bB";
 }
 
-bool Bishop::move() {
+bool Bishop::canMove() {
 
 }

@@ -10,5 +10,5 @@ private:
 public:
     King(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };

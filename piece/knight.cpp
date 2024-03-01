@@ -6,6 +6,6 @@ Knight::Knight(bool isWhite) {
     this->abbrv = (isWhite)? "wN" : "bN";
 }
 
-bool Knight::move() {
+bool Knight::canMove() {
 
 }

@@ -7,6 +7,6 @@ Pawn::Pawn(bool isWhite) {
     this->initialState = true;
 }
 
-bool Pawn::move() {
+bool Pawn::canMove() {
     mess("loz");
 }

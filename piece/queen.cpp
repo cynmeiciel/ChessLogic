@@ -6,6 +6,6 @@ Queen::Queen(bool isWhite) {
     this->abbrv = (isWhite)? "wQ" : "bQ";
 }
 
-bool Queen::move() {
+bool Queen::canMove() {
     return false;
 }

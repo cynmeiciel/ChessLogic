@@ -7,6 +7,6 @@ Rook::Rook(bool isWhite) {
     this->initialState = true;
 }
 
-bool Rook::move() {
+bool Rook::canMove() {
     
 }

@@ -9,5 +9,5 @@ private:
 public:
     Queen(bool isWhite);
 
-    bool move() override;
+    bool canMove() override;
 };
