@@ -1,4 +1,5 @@
 #include "rook.hpp"
+#include "../board.hpp"
 
 Rook::Rook(bool isWhite) {
     this->m_white = isWhite;
@@ -7,6 +8,6 @@ Rook::Rook(bool isWhite) {
     this->initialState = true;
 }
 
-bool Rook::canMove() {
-    
+bool Rook::canMove(Coord start, Coord end, Board& board) {
+    return true;
 }

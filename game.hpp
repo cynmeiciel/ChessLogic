@@ -21,6 +21,7 @@ private:
 
     /// @brief The coordinates of the selected piece that is to be moved.
     Coord selectedPiece;
+    the_piece selectedPtr;
 
     /**
      * @brief Quits the game.
@@ -57,7 +58,7 @@ private:
      * @param whiteTurn True if it is currently white's turn, False if it is black's turn.
      * @param xy The coordinates of the selected piece.
      */
-    void handleMove(bool whiteTurn, Coord xy);
+    void handleMove(Coord xy);
 
     /**
      * @brief Displays the help menu.
@@ -77,11 +78,6 @@ private:
      * @brief Handles the case when the user picks a wrong side.
      */
     void pickWrongSide();
-
-    /**
-     * @brief Handles the case when the user tries to capture their own piece.
-     */
-    void captureAlly();
 
     /**
      * @brief Undoes the last move and goes back to the previous state.

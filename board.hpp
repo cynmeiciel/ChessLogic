@@ -67,6 +67,18 @@ public:
     void movePiece(Coord start, Coord destination, bool en_passant = false);
 
     /**
+     * @brief Checks if a square on the board is empty.
+     *
+     * This function checks if a square on the board is empty (i.e., no piece is present).
+     *
+     * @param xy The coordinates of the square to check.
+     * @return True if the square is empty, false otherwise.
+     */
+    inline bool isEmpty(Coord xy) {
+        return this->pieceAlive[xy.x][xy.y] == nullptr;
+    }
+
+    /**
      * @brief Sets the current turn state of the board.
      *
      * @param state The turn state to set.

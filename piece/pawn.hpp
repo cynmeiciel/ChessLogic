@@ -2,7 +2,6 @@
 
 #include "piece.hpp"
 
-
 class Pawn : public Piece {
 private:
     bool initialState;
@@ -10,5 +9,5 @@ private:
 public:
     Pawn(bool isWhite);
 
-    bool canMove() override;
+    bool canMove(Coord start, Coord end, Board& board) override;
 };

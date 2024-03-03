@@ -1,4 +1,5 @@
 #include "king.hpp"
+#include "../board.hpp"
 
 King::King(bool isWhite){
     this->m_white = isWhite;
@@ -7,5 +8,6 @@ King::King(bool isWhite){
     this->initialState = true;
 }
 
-bool King::canMove() {
+bool King::canMove(Coord start, Coord end, Board& board) {
+    return true;
 }

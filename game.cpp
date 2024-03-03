@@ -30,7 +30,13 @@ void Game::viewBoard() {
 }
 
 void Game::viewHelp() {
-    mess("View help: ");
+    mess("Help: ");
+    mess("Type \"quit\" to quit the game.");
+    mess("Type \"view\" to view the current board.");
+    mess("Type \"help\" to view this help.");
+    mess("Type \"reset\" to reset the game.");
+    mess("Type \"back\" to go back to the previous state.");
+    mess("Type \"<x> <y>\" to select a piece or move a piece.");
 }
 
 void Game::start()

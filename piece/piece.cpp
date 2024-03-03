@@ -1,7 +1,7 @@
 #include "piece.hpp"
+#include "../board.hpp"
 
-bool Piece::isWhite()
-{
+bool Piece::isWhite() {
     return this->m_white;
 }
 

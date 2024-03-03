@@ -6,6 +6,6 @@ Queen::Queen(bool isWhite) {
     this->abbrv = (isWhite)? "wQ" : "bQ";
 }
 
-bool Queen::canMove() {
+bool Queen::canMove(Coord start, Coord end, Board& board) {
     return false;
 }

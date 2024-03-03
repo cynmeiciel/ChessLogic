@@ -4,6 +4,8 @@
 #include <iostream>
 #include "../constconfig.hpp"
 
+class Board;
+
 /// @brief An abstract class representing a piece on the board
 class Piece {
 protected:
@@ -15,20 +17,20 @@ protected:
     std::string abbrv;
 public:
 
-    /// @brief Get the color of the piece
+    /// @brief Gets the color of the piece
     /// @return true if the piece is white, false if the piece is black
     bool isWhite();
 
-    /// @brief Handle when the piece is captured
+    /// @brief Handles when the piece is captured
     void beCaptured();
     
-    /// @brief Get the name of the piece
+    /// @brief Gets the name of the piece
     std::string getName();
-    /// @brief Get the abbreviation of the piece
+    /// @brief Gets the abbreviation of the piece
     std::string getAbbrv();
 
     /// @brief A pure virtual function to check if the piece can move
-    virtual bool canMove() = 0;
+    virtual bool canMove(Coord start, Coord end, Board& board) = 0;
 };
 
 /// @brief A pointer representing a piece locating on the board, if not nullptr

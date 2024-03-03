@@ -9,5 +9,5 @@ private:
 public:
     Bishop(bool isWhite);
 
-    bool canMove() override;
+    bool canMove(Coord start, Coord end, Board& board) override;
 };

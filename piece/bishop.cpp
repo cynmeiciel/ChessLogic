@@ -1,4 +1,5 @@
 #include "bishop.hpp"
+#include "../board.hpp"
 
 Bishop::Bishop(bool isWhite) {
     this->m_white = isWhite;
@@ -6,6 +7,6 @@ Bishop::Bishop(bool isWhite) {
     this->abbrv = (isWhite)? "wB" : "bB";
 }
 
-bool Bishop::canMove() {
-
+bool Bishop::canMove(Coord start, Coord end, Board& board) {
+    return true;
 }

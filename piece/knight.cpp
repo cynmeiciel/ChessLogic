@@ -1,4 +1,5 @@
 #include "knight.hpp"
+#include "../board.hpp"
 
 Knight::Knight(bool isWhite) {
     this->m_white = isWhite;
@@ -6,6 +7,6 @@ Knight::Knight(bool isWhite) {
     this->abbrv = (isWhite)? "wN" : "bN";
 }
 
-bool Knight::canMove() {
-
+bool Knight::canMove(Coord start, Coord end, Board& board) {
+    return true;
 }

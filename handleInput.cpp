@@ -7,21 +7,21 @@ void Game::handlePick(bool whiteTurn, Coord xy) {
         this->foundNoPiece();
     else if (piece->isWhite() == whiteTurn) { // Check if having picked the right side
         this->selectedPiece = xy;
+        this->selectedPtr = piece;
         this->successfully = true;
     } else {
         this->pickWrongSide();
     }
 }
 
-void Game::handleMove(bool whiteTurn, Coord xy) {
-    the_piece destination = this->board->findPiecebyCoor(xy);
-    if (destination != nullptr)
-        if (destination->isWhite() == whiteTurn) {
-            this->captureAlly();
-            return;
-        }
-    this->board->movePiece(this->selectedPiece, xy);
-    this->successfully = true;
+void Game::handleMove(Coord xy) {
+    if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))) {
+        this->board->movePiece(this->selectedPiece, xy);
+        this->successfully = true;
+    } else {
+        mess("Invalid move!");
+        mess("Please select again! You can type \"view\" to view the current board.");
+    }
 }
 
 // Handle when input is valid
@@ -32,13 +32,13 @@ void Game::spotSelected(Coord xy) {
         this->handlePick(true, xy);
         break;
     case TurnState::WhiteSelected:
-        this->handleMove(true, xy);
+        this->handleMove(xy);
         break;
     case TurnState::BlackTurn:
         this->handlePick(false, xy);
         break;
     case TurnState::BlackSelected:
-        this->handleMove(false, xy);
+        this->handleMove(xy);
         break;
     }
 }
@@ -50,11 +50,6 @@ void Game::foundNoPiece() {
 
 void Game::pickWrongSide() {
     mess("This is not your piece!");
-    mess("Please select again! You can type \"view\" to view the current board.");
-}
-
-void Game::captureAlly() {
-    mess("You cannot capture your own piece!");
     mess("Please select again! You can type \"view\" to view the current board.");
 }
 
