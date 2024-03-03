@@ -18,10 +18,6 @@ void Game::handleMove(Coord xy) {
     if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))) {
         this->board->movePiece(this->selectedPiece, xy);
         this->successfully = true;
-        // if (!this->board->enPassantDeclared) {
-        //     this->board->enPassantPawn.reset();
-        // } else
-        //     this->board->enPassantDeclared = true;
 
     } else {
         mess("Invalid move!");
@@ -80,7 +76,6 @@ void Game::handleInput() {
     }
     
     this->checkInput(input);
-    // continue to handle?
 }
 
 void Game::checkInput(std::string input) {

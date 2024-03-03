@@ -103,6 +103,11 @@ private:
      */
     void foundNoPiece();
 
+    /**
+     * @brief Resets the game state when the turn switches.
+     */
+    void resetParamsOnTurnSwitch();
+
 public:
 
     /**

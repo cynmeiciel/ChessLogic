@@ -24,15 +24,17 @@ bool Pawn::canMove(Coord start, Coord end, Board& board) {
             return true;
         }
         // En passant
-        else if (board.enPassantPawn.has_value())
+        else if (board.enPassantPawn.has_value()) {
             if (abs(start.x - end.x) == 1 && end == board.enPassantPawn.value()) {
                 this->initialState = false;
+                board.performEnPassant(Coord(end.x, end.y - direction));
                 return true;
             }
+        }
     }
     // Initial two-square move and setup for en passant
     else if (initialState && end.y - start.y == 2 * direction
-            && start.x == end.x && board.isEmpty(end)) {
+            && start.x == end.x && board.isEmptyLine(start, end)) {
         this->initialState = false;
         board.enPassantPawn = Coord(end.x, end.y - direction);
         board.enPassantDeclared = true;

@@ -1,14 +1,31 @@
 #include "game.hpp"
 
+void Game::resetParamsOnTurnSwitch() {
+    this->successfully = false;
+
+    switch (this->currentState)
+    {
+    case TurnState::WhiteSelected:
+    case TurnState::BlackSelected:
+        this->selectedPtr.reset();
+        break;
+    default:
+        if (this->board->enPassantDeclared) {
+            this->board->enPassantDeclared = false;
+        } else if (this->board->enPassantPawn.has_value())
+            this->board->enPassantPawn.reset();
+        break;
+    }
+}
 
 void Game::mainloop() {
 
     while (this->isRunning) {
         mess("Input");
-        handleInput();
+        this->handleInput();
 
         if (this->successfully) {
-            this->successfully = false;
+            this->resetParamsOnTurnSwitch();
 
             switch (this->currentState)
             {
@@ -28,6 +45,10 @@ void Game::mainloop() {
                 this->currentState = TurnState::WhiteTurn;
                 mess("Select your piece!");
                 break;
+            }
+            if (this->board->enPassantPawn.has_value()) {
+                std::cout << "En passant: " << this->board->enPassantPawn.value().to_string() 
+                << std::endl;
             }
         } else {
             this->back();

@@ -17,7 +17,6 @@ class Board {
 private:
     the_piece pieceAlive[8][8]; /**< The array representing the alive pieces on the board. */
     std::vector<the_piece> pieceDead; /**< The vector representing the captured pieces. */
-    TurnState currentState; /**< The current turn state of the board. */
 
 public:
 
@@ -50,9 +49,19 @@ public:
      * This function is called when a piece is captured during the game. It updates the internal state of the board accordingly.
      *
      * @param xy The coordinates of the captured piece.
-     * @param en_passant A flag indicating whether the capture was an en passant capture.
+     * @note This function does not remove the piece from the board. It only updates the internal state of the board.
+     * @note This function does not perform en passant captures by default. It is the responsibility of the `performEnPassant` function to handle en passant captures.
      */
-    void pieceCaptured(Coord xy, bool en_passant = false);
+    void pieceCaptured(Coord xy);
+
+    /**
+     * @brief Performs an en passant capture.
+     *
+     * This function is called when an en passant capture is performed during the game. It removes the captured pawn from the board and updates the internal state of the board accordingly.
+     *
+     * @param enPassant The coordinates of the captured pawn.
+     */
+    void performEnPassant(Coord enPassant);
 
     /**
      * @brief Displays the current state of the board.
@@ -66,7 +75,6 @@ public:
      *
      * @param start The starting coordinate of the piece.
      * @param destination The destination coordinate of the piece.
-     * @param en_passant Whether the move is an en passant capture.
      */
     void movePiece(Coord start, Coord destination);
 
@@ -74,7 +82,7 @@ public:
      * @brief Checks if a square on the board is empty.
      *
      * This function checks if a square on the board is empty (i.e., no piece is present).
-     *
+     * 
      * @param xy The coordinates of the square to check.
      * @return True if the square is empty, false otherwise.
      */
@@ -83,13 +91,30 @@ public:
     }
 
     /**
-     * @brief Sets the current turn state of the board.
+     * @brief Checks if a line on the board is empty.
      *
-     * @param state The turn state to set.
+     * This function checks if a line on the board is empty (i.e., no pieces are present between the start and end coordinates).
+     *
+     * @note This function assumes that the start and end coordinates are in the same line.
+     * @note The start coordinate is not included in the check.
+     * @param start The starting coordinate of the line.
+     * @param end The ending coordinate of the line.
+     * @return True if the line is empty, false otherwise.
      */
-    inline void setState(TurnState state) {
-        this->currentState = state;
-    }
+    bool isEmptyLine(Coord start, Coord end);
+
+    /**
+     * @brief Checks if a diagonal on the board is empty.
+     *
+     * This function checks if a diagonal on the board is empty (i.e., no pieces are present between the start and end coordinates).
+     *
+     * @note This function assumes that the start and end coordinates are in the same diagonal.
+     * @note The start coordinate is not included in the check.
+     * @param start The starting coordinate of the diagonal.
+     * @param end The ending coordinate of the diagonal.
+     * @return True if the diagonal is empty, false otherwise.
+     */
+    bool isEmptyDiagonal(Coord start, Coord end);
 
     /**
      * @brief Creates a new piece on the board.
