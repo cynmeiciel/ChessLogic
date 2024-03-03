@@ -20,6 +20,10 @@ private:
     TurnState currentState; /**< The current turn state of the board. */
 
 public:
+
+    std::optional<Coord> enPassantPawn;
+    bool enPassantDeclared;
+
     /**
      * @brief Default constructor for the Board class.
      */
@@ -48,7 +52,7 @@ public:
      * @param xy The coordinates of the captured piece.
      * @param en_passant A flag indicating whether the capture was an en passant capture.
      */
-    void pieceCaptured(Coord xy, bool en_passant);
+    void pieceCaptured(Coord xy, bool en_passant = false);
 
     /**
      * @brief Displays the current state of the board.
@@ -64,7 +68,7 @@ public:
      * @param destination The destination coordinate of the piece.
      * @param en_passant Whether the move is an en passant capture.
      */
-    void movePiece(Coord start, Coord destination, bool en_passant = false);
+    void movePiece(Coord start, Coord destination);
 
     /**
      * @brief Checks if a square on the board is empty.

@@ -18,6 +18,11 @@ void Game::handleMove(Coord xy) {
     if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))) {
         this->board->movePiece(this->selectedPiece, xy);
         this->successfully = true;
+        // if (!this->board->enPassantDeclared) {
+        //     this->board->enPassantPawn.reset();
+        // } else
+        //     this->board->enPassantDeclared = true;
+
     } else {
         mess("Invalid move!");
         mess("Please select again! You can type \"view\" to view the current board.");
@@ -67,7 +72,7 @@ void Game::handleInput() {
         this->viewHelp();
         return;
     } else if (input == "reset") {
-        this->start();
+        this->reset();
         return;
     } else if (input == "back") {
         this->back();

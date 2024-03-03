@@ -126,4 +126,11 @@ public:
      */
     void start();
 
+    /**
+     * @brief Resets the game.
+     *
+     * This function resets the game to its initial state.
+     */
+    void reset();
+
 };

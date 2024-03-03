@@ -86,14 +86,15 @@ void Board::pieceCaptured(Coord xy, bool en_passant)
         }
         captured = this->findPiecebyCoor(xy);
         this->pieceAlive[xy.x][xy.y] = nullptr;
-    }
-        this->pieceDead.push_back(captured);
+    } else
+        captured = this->findPiecebyCoor(xy);
+        
+    this->pieceDead.push_back(captured);
 }
 
-void Board::movePiece(Coord start, Coord destination, bool en_passant) {
-    if (this->pieceAlive[destination.x][destination.y] != nullptr 
-        || en_passant) // Sometimes en-passant might occur
-        this->pieceCaptured(destination, en_passant);
+void Board::movePiece(Coord start, Coord destination) {
+    if (this->pieceAlive[destination.x][destination.y] != nullptr)
+        this->pieceCaptured(destination);
 
     this->pieceAlive[destination.x][destination.y]
                         =

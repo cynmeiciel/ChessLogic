@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <string>
 #include <memory>
+#include <optional>
 
 
 /// @brief A struct representing a coordinate on the board.
@@ -13,6 +14,17 @@ struct Coord {
 
     Coord(std::uint_least8_t a, std::uint_least8_t b) : x(a), y(b) {}
     Coord() {};
+
+    std::string to_string() {
+        std::string s;
+        s.append(1, (char)(x + 97));
+        s.append(1, (char)(y + 49));
+        return s;
+    }
+
+    friend bool operator==(const Coord& a, const Coord& b) {
+        return a.x == b.x && a.y == b.y;
+    }
 };
 
 /**

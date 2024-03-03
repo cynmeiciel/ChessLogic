@@ -39,11 +39,18 @@ void Game::viewHelp() {
     mess("Type \"<x> <y>\" to select a piece or move a piece.");
 }
 
-void Game::start()
-{
+void Game::start() {
     mess("Welcome to chess!");
     mess("Select a piece!");
     this->mainloop();
+}
+
+void Game::reset() {
+    delete this->board;
+    this->board = new Board();
+    this->currentState = TurnState::WhiteTurn;
+    this->successfully = false;
+    mess("Game reset!");
 }
 
 void Game::back() {
