@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include "../constconfig.hpp"
+#include "../general.hpp"
 
 class Board;
 

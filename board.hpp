@@ -1,7 +1,7 @@
 #pragma once
 
 #include "piece/includethis.hpp"
-#include "constconfig.hpp"
+#include "general.hpp"
 #include <vector>
 #include <string>
 #include <memory>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "constconfig.hpp"
+#include "general.hpp"
 #include "board.hpp"
 
 /**
