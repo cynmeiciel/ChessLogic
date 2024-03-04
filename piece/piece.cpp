@@ -13,6 +13,6 @@ std::string Piece::getName() {
     return this->name;
 }
 
-std::string Piece::getAbbrv() {
-    return this->abbrv;
+std::string Piece::getSymbol() {
+    return this->symbol;
 }

@@ -4,10 +4,20 @@
 King::King(bool isWhite){
     this->m_white = isWhite;
     this->name = (isWhite)? "White King" : "Black King";
-    this->abbrv = (isWhite)? "wK" : "bK";
+    this->symbol = (isWhite)? "♚" : "♔";
     this->initialState = true;
 }
 
 bool King::canMove(Coord start, Coord end, Board& board) {
-    return true;
+    Coord distance = start - end;
+    if (distance.abs().x <= 1 && distance.abs().y <= 1) {
+        if (!board.isEmpty(end) 
+            && board.findPiecebyCoor(end)->isWhite() == this->isWhite()) {
+            return false;
+        } else {
+            this->initialState = false;
+            return true;
+        }
+    } else
+        return false;
 }

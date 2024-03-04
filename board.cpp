@@ -88,7 +88,7 @@ void Board::movePiece(Coord start, Coord destination) {
 
 bool Board::isEmptyLine(Coord start, Coord end) {
     // Error handling if the start and end are the same
-    if (start.x == end.x && start.y == end.y)
+    if (start == end)
         throw std::invalid_argument("The start and end are the same!");
 
     // Return false if the start and end are not in the same line
@@ -124,8 +124,9 @@ bool Board::isEmptyDiagonal(Coord start, Coord end) {
     // Check if the diagonal is empty except for the start cell and the end cell
     int dx = (end.x - start.x) / abs(end.x - start.x);
     int dy = (end.y - start.y) / abs(end.y - start.y);
-    for (int x = start.x + dx, y = start.y + dy; x != end.x; x += dx, y += dy) {
-        if (!this->isEmpty(Coord(x, y)))
+    const Coord dCoord(dx, dy);
+    for (Coord Crd = start + dCoord; Crd != end; Crd += dCoord) {
+        if (!this->isEmpty(Crd))
             return false;
     }
     return true;
@@ -138,8 +139,11 @@ void Board::view() {
         std::cout << row+1 << "  ";
         for (int col = 0; col < 8; col++) {
             bool empty = (this->isEmpty(Coord(col, row)));
-            std::string mez = (empty)? "[ ]" : this->pieceAlive[col][row]->getAbbrv();
-            std::cout << std::setw(5) << mez;
+            if (empty) {
+                std::cout << std::setw(5) << "[ ]";
+            } else {
+                std::cout << std::setw(7) << this->pieceAlive[col][row]->getSymbol();
+            }
         }
     }
     std::cout << "\n" << std::endl << "   A    B    C    D    E    F    G    H    _";

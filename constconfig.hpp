@@ -9,17 +9,25 @@
 
 /// @brief A struct representing a coordinate on the board.
 struct Coord {
-    std::uint_least8_t x;
-    std::uint_least8_t y;
+    std::int_least8_t x;
+    std::int_least8_t y;
 
-    Coord(std::uint_least8_t a, std::uint_least8_t b) : x(a), y(b) {}
+    Coord(std::int_least8_t a, std::int_least8_t b) : x(a), y(b) {}
     Coord() {};
 
-    std::string to_string() {
+    /// @brief Converts the coordinate to a string.
+    /// @return The string representation of the coordinate.
+    inline std::string to_string() {
         std::string s;
         s.append(1, (char)(x + 97));
         s.append(1, (char)(y + 49));
         return s;
+    }
+
+    /// @brief Gets the absolute value of the coordinate.
+    /// @return The absolute value of the coordinate.
+    inline Coord abs() {
+        return Coord(std::abs(x), std::abs(y));
     }
 
     friend bool operator==(const Coord& a, const Coord& b) {
@@ -28,6 +36,26 @@ struct Coord {
 
     friend bool operator!=(const Coord& a, const Coord& b) {
         return !(a == b);
+    }
+
+    friend Coord operator+(const Coord& a, const Coord& b) {
+        return Coord(a.x + b.x, a.y + b.y);
+    }
+
+    friend Coord operator-(const Coord& a, const Coord& b) {
+        return Coord(a.x - b.x, a.y - b.y);
+    }
+
+    friend Coord operator+=(Coord& a, const Coord& b) {
+        a.x += b.x;
+        a.y += b.y;
+        return a;
+    }
+
+    friend Coord operator-=(Coord& a, const Coord& b) {
+        a.x -= b.x;
+        a.y -= b.y;
+        return a;
     }
 };
 
@@ -96,7 +124,7 @@ inline std::string XY(std::string raw_coord) {
  * @return The Coord struct corresponding to the chess coordinate.
  */
 inline Coord coord(std::string raw_coord) {
-    std::uint_least8_t a = (std::stoi(XY(raw_coord)));
+    std::int_least8_t a = (std::stoi(XY(raw_coord)));
     Coord xy;
     xy.x = a / 10;
     xy.y = a % 10 - 1;

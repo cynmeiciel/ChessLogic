@@ -13,8 +13,8 @@ protected:
     bool m_white;
     /// @brief A string representing the name of the piece
     std::string name;
-    /// @brief A string representing the abbreviation of the piece
-    std::string abbrv;
+    /// @brief A string representing the symbol of the piece
+    std::string symbol;
 public:
 
     /// @brief Gets the color of the piece
@@ -27,7 +27,7 @@ public:
     /// @brief Gets the name of the piece
     std::string getName();
     /// @brief Gets the abbreviation of the piece
-    std::string getAbbrv();
+    std::string getSymbol();
 
     /// @brief A pure virtual function to check if the piece can move
     virtual bool canMove(Coord start, Coord end, Board& board) = 0;
