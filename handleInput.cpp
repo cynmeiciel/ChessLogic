@@ -16,7 +16,7 @@ void Game::handlePick(bool whiteTurn, Coord xy) {
 
 void Game::handleMove(Coord xy) {
     if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))
-        && this->selectedPiece == xy) {
+        && this->selectedPiece != xy) {
         this->board->movePiece(this->selectedPiece, xy);
         this->successfully = true;
 

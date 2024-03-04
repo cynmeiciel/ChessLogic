@@ -95,7 +95,7 @@ bool Board::isEmptyLine(Coord start, Coord end) {
     if (start.x != end.x && start.y != end.y)
         return false;
 
-    // Check if the line is empty except for the start cell
+    // Check if the line is empty except for the start cell and the end cell
     if (start.x == end.x) {
         int dy = (end.y - start.y) / abs(end.y - start.y);
         for (int y = start.y + dy; y != end.y; y += dy) {
@@ -121,7 +121,7 @@ bool Board::isEmptyDiagonal(Coord start, Coord end) {
     if (abs(start.x - end.x) != abs(start.y - end.y))
         return false;
 
-    // Check if the diagonal is empty except for the start cell
+    // Check if the diagonal is empty except for the start cell and the end cell
     int dx = (end.x - start.x) / abs(end.x - start.x);
     int dy = (end.y - start.y) / abs(end.y - start.y);
     for (int x = start.x + dx, y = start.y + dy; x != end.x; x += dx, y += dy) {

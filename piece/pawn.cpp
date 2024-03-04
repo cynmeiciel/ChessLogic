@@ -34,7 +34,7 @@ bool Pawn::canMove(Coord start, Coord end, Board& board) {
     }
     // Initial two-square move and setup for en passant
     else if (initialState && end.y - start.y == 2 * direction
-            && start.x == end.x && board.isEmptyLine(start, end)) {
+            && start.x == end.x && board.isEmptyLine(start, end) && board.isEmpty(end)) {
         this->initialState = false;
         board.enPassantPawn = Coord(end.x, end.y - direction);
         board.enPassantDeclared = true;
