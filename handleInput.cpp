@@ -15,7 +15,8 @@ void Game::handlePick(bool whiteTurn, Coord xy) {
 }
 
 void Game::handleMove(Coord xy) {
-    if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))) {
+    if (this->selectedPtr->canMove(this->selectedPiece, xy, *(this->board))
+        && this->selectedPiece == xy) {
         this->board->movePiece(this->selectedPiece, xy);
         this->successfully = true;
 
@@ -25,7 +26,6 @@ void Game::handleMove(Coord xy) {
     }
 }
 
-// Handle when input is valid
 void Game::spotSelected(Coord xy) {
     switch (this->currentState)
     {

@@ -95,11 +95,10 @@ public:
      *
      * This function checks if a line on the board is empty (i.e., no pieces are present between the start and end coordinates).
      *
-     * @note This function assumes that the start and end coordinates are in the same line.
      * @note The start coordinate is not included in the check.
      * @param start The starting coordinate of the line.
      * @param end The ending coordinate of the line.
-     * @return True if the line is empty, false otherwise.
+     * @return True if the line is empty, false otherwise (including if the start and end coordinates are not in the same line).
      */
     bool isEmptyLine(Coord start, Coord end);
 
@@ -108,11 +107,10 @@ public:
      *
      * This function checks if a diagonal on the board is empty (i.e., no pieces are present between the start and end coordinates).
      *
-     * @note This function assumes that the start and end coordinates are in the same diagonal.
      * @note The start coordinate is not included in the check.
      * @param start The starting coordinate of the diagonal.
      * @param end The ending coordinate of the diagonal.
-     * @return True if the diagonal is empty, false otherwise.
+     * @return True if the diagonal is empty, false otherwise (including if the start and end coordinates are not in the same diagonal).
      */
     bool isEmptyDiagonal(Coord start, Coord end);
 

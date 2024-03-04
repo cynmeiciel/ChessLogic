@@ -46,10 +46,10 @@ void Game::mainloop() {
                 mess("Select your piece!");
                 break;
             }
-            if (this->board->enPassantPawn.has_value()) {
-                std::cout << "En passant: " << this->board->enPassantPawn.value().to_string() 
-                << std::endl;
-            }
+            // if (this->board->enPassantPawn.has_value()) {
+            //     std::cout << "En passant: " << this->board->enPassantPawn.value().to_string() 
+            //     << std::endl;
+            // }
         } else {
             this->back();
         }

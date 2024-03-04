@@ -87,13 +87,13 @@ void Board::movePiece(Coord start, Coord destination) {
 }
 
 bool Board::isEmptyLine(Coord start, Coord end) {
-    // Error handling if the start and end are not in the same line
-    if (start.x != end.x && start.y != end.y)
-        throw std::invalid_argument("The start and end are not in the same line!");
-
     // Error handling if the start and end are the same
     if (start.x == end.x && start.y == end.y)
         throw std::invalid_argument("The start and end are the same!");
+
+    // Return false if the start and end are not in the same line
+    if (start.x != end.x && start.y != end.y)
+        return false;
 
     // Check if the line is empty except for the start cell
     if (start.x == end.x) {
@@ -113,13 +113,13 @@ bool Board::isEmptyLine(Coord start, Coord end) {
 }
 
 bool Board::isEmptyDiagonal(Coord start, Coord end) {
-    // Error handling if the start and end are not in the same diagonal
-    if (abs(start.x - end.x) != abs(start.y - end.y))
-        throw std::invalid_argument("The start and end are not in the same diagonal!");
-
     // Error handling if the start and end are the same
     if (start.x == end.x && start.y == end.y)
         throw std::invalid_argument("The start and end are the same!");
+    
+    // Return false if the start and end are not in the same diagonal
+    if (abs(start.x - end.x) != abs(start.y - end.y))
+        return false;
 
     // Check if the diagonal is empty except for the start cell
     int dx = (end.x - start.x) / abs(end.x - start.x);
